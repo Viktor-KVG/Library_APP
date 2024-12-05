@@ -1,0 +1,1 @@
+PATH_DB = '/home/vitass/Desktop/library_app/pythonProject/db/db.json'
