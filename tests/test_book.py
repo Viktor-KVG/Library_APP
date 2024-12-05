@@ -5,7 +5,7 @@ from unittest.mock import patch
 from src.book_validator import BookValidator
 
 
-"""Класс тестирует ввод неверных данных для поей книги"""
+"""Класс тестирует ввод неверных данных для полей книги"""
 
 class TestBookValidator(unittest.TestCase):
     """Ввод неверных данных в поле title"""
