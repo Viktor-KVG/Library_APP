@@ -63,13 +63,18 @@ class OperationsDataBase(DBConnection, BookValidator):
 
         search_request = [book for book in self.data if title == book['title']
                           or year == book['year'] or author == book['author']]
-        first_response = search_request[0]
-        if first_response:
-            print(f'Наиболее подходящий ответ на ваш запрос: ID:{first_response['id']}, Title: '
-                  f'{first_response['title']}, Author: {first_response['author']}, '
-                      f'Year: {first_response['year']}, Status: {first_response['status']}')
+        
+        if search_request:  # Проверяем, есть ли результаты
+            first_response = search_request[0]
+            print(f'Наиболее подходящий ответ на ваш запрос: ID: {first_response["id"]}, Title: '
+                  f'{first_response["title"]}, Author: {first_response["author"]}, '
+                  f'Year: {first_response["year"]}, Status: {first_response["status"]}')
         else:
-            print('Книга не найдена')
+            print('Книга с такими критериями не найдена')
+            first_response = None  # Инициализируем переменную, если книга не найдена
+
+        # Если необходимо, можно вернуть first_response, чтобы использовать его дальше
+        return first_response
 
     def show_all_books(self):
         """Выводит список всех книг, которые есть в наличии"""

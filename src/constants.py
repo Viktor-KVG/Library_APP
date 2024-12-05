@@ -1,1 +1,1 @@
-PATH_DB = '/home/vitass/Desktop/library_app/pythonProject/db/db.json'
+PATH_DB = '/home/vitass/Desktop/library_app_1/library_app/db/db.json'

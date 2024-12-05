@@ -7,7 +7,7 @@ class BookValidator:
         while True:
             title = input('Введите название книги (1-70 символов): ')
             if title.lower() == 'exit':
-                print('Выход из программы...')
+                print('Выход в меню...')
                 return None
             if len(title) < 1 or len(title) > 70:
                 print('Поле книги является обязательным для заполнения и должно содержать от 1 до 70 символов.')
@@ -20,7 +20,7 @@ class BookValidator:
         while True:
             author = input('Введите автора книги (1-40 символов): ')
             if author.lower() == 'exit':
-                print('Выход из программы...')
+                print('Выход в меню...')
                 return None
             if len(author) < 1 or len(author) > 40 or not author.isalpha():
                 print('Поле автор должно содержать от 1 до 40 символов и состоять только из букв.')
@@ -46,7 +46,7 @@ class BookValidator:
         while True:
             id_data = input('Введите ID книги (число):')
             if id_data.lower() == 'exit':
-                print('Выход из программы...')
+                print('Выход в меню...')
                 return None
             if not id_data.isdigit():
                 print('Поле ID должно иметь числовое значение')
@@ -60,7 +60,7 @@ class BookValidator:
         while True:
             data = input('Введите статус книги:')
             if data.lower() == 'exit':
-                print('Выход из программы...')
+                print('Выход в меню...')
                 return None
             if data not in right_value:
                 print(f'Можно ввести только одно из этих значений - {right_value}')
