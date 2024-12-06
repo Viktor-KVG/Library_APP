@@ -33,7 +33,7 @@ class BookValidator:
         while True:
             year = input('Введите год выпуска книги (4 цифры, не более 2024): ')
             if year.lower() == 'exit':
-                print('Выход из программы...')
+                print('Выход в меню...')
                 return None  # Завершаем выполнение
             if len(year) != 4 or not year.isdigit() or int(year) > 2024:
                 print('Поле year должно содержать 4 цифры и не превышать 2024.')
