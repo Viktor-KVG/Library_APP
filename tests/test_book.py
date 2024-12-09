@@ -2,12 +2,13 @@ import unittest
 from io import StringIO
 from unittest.mock import patch
 
-from src.book_validator import BookValidator
-
+from library_app.src.book_validator import BookValidator
 
 """Класс тестирует ввод неверных данных для полей книги"""
 
 class TestBookValidator(unittest.TestCase):
+
+
     """Ввод неверных данных в поле title"""
     @patch('builtins.input', side_effect=['',  # Пустой ввод
                                             'Too long title that exceeds the maximum length of seventy characters, which is not acceptable.',  # Длинный ввод
@@ -62,3 +63,20 @@ class TestBookValidator(unittest.TestCase):
         self.assertIn('Поле year должно содержать 4 цифры и не превышать 2024.', output)  # Для ввода чисел
         self.assertIn('Поле year должно содержать 4 цифры и не превышать 2024.', output)  # Для числа больше 2024
         self.assertIn('Выход в меню...', output)  # Сообщение об выходе
+
+
+    @patch('builtins.input', side_effect=['', 'false', 'exit'])
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_get_book_by_id(self, mock_stdout, mock_input):
+        """Ввод неверных данных в поле year"""
+        # Выполняем функцию
+        result = BookValidator.get_book_by_id()
+        # Проверяем, что корректный год возвращается
+        self.assertIsNone(result)  # Проверяем, что возвращается None при выходе
+
+        # Получаем весь вывод
+        output = mock_stdout.getvalue().strip().split('\n')
+        # Проверяем наличие соответствующих сообщений в выводе
+        self.assertIn('Поле ID должно иметь числовое значение', output)  # Для пустого ввода
+        self.assertIn('Поле ID должно иметь числовое значение', output)  # Для ввода чисел
+        self.assertIn('Выход в меню...', output)

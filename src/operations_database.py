@@ -1,10 +1,11 @@
-from src.book_validator import BookValidator
-from src.db_connection import DBConnection
+from library_app.src.book_validator import BookValidator
+from library_app.src.db_connection import DBConnection
 
 """Класс с основными операциями в библиотеке"""
 class OperationsDataBase(DBConnection, BookValidator):
     def __init__(self):
-        super().__init__()  # Инициализируем родительский класс
+        super().__init__()
+        # Инициализируем родительский класс
 
     def create_book(self):
         """Добавляет новую книгу в базу данных."""
@@ -42,6 +43,7 @@ class OperationsDataBase(DBConnection, BookValidator):
             book_exist = [exist for exist in self.data if id_data == exist['id']]
             if book_exist:
                 new_list = [book for book in self.data if id_data != book['id']]
+                self.data = new_list  # Обновляем self.data
                 self.write_db(new_list)
                 print('Книга была успешно удалена')
             else:
@@ -94,7 +96,10 @@ class OperationsDataBase(DBConnection, BookValidator):
             book_exist = book_exist[0]
             value = self.get_status_change()
             book_exist['status'] = value
+            if book_exist['status'] == None:
+                return None
             print('Статус книги обновлён')
             self.write_db(self.data)
+
         else:
             print('Значение не найдено или не корректно')

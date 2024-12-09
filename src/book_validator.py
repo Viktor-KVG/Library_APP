@@ -22,10 +22,10 @@ class BookValidator:
             if author.lower() == 'exit':
                 print('Выход в меню...')
                 return None
-            if len(author) < 1 or len(author) > 40 or not author.isalpha():
+            if len(author) < 1 or len(author) > 40 or not all(c.isalpha() or c.isspace() for c in author):
                 print('Поле автор должно содержать от 1 до 40 символов и состоять только из букв.')
                 continue
-            return author[0].upper() + author[1:]
+            return author.title()
 
     @staticmethod
     def get_book_year():

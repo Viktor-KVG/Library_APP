@@ -1,5 +1,5 @@
 """Класс для навигации по меню операций с базой данных книг"""
-from src.operations_database import OperationsDataBase
+from library_app.src.operations_database import OperationsDataBase
 
 
 class MenuNavigator(OperationsDataBase):

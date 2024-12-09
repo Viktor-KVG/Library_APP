@@ -1,6 +1,6 @@
 import json
 
-from src.constants import PATH_DB
+from library_app.src.constants import PATH_DB
 
 """Класс для взаимодействия с базой данных"""
 class DBConnection:
